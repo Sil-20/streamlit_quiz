@@ -1,3 +1,6 @@
+import streamlit as st
+import plotly.graph_objects as go  
+
 quiz_data = [
     {"question": "D'après vous, qu'est-ce qui a le moins d'impact sur le climat ?",
      "option_a": "Repas avec du Boeuf",
@@ -46,9 +49,6 @@ quiz_data = [
 ]
 
 ######################################  debut quizz ######################################
-
-import streamlit as st
-import plotly.graph_objects as go  
 
 # 🎨 CSS personnalisé pour un look écologique moderne
 st.markdown("""
