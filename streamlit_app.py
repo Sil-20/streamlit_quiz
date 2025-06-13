@@ -1,32 +1,30 @@
-import streamlit as st
-import plotly.graph_objects as go  
-
 quiz_data = [
     {"question": "D'après vous, qu'est-ce qui a le moins d'impact sur le climat ?",
      "option_a": "Repas avec du Boeuf",
      "option_b": "A/R Paris-Marseille en TGV",
      "a_ecv": 7.26,
      "b_ecv": 4.4,
-     "img_a": "../streamlit_quiz/fiche Quiz/repasavecduboeuf.jpg",
-     "img_b": "../streamlit_quiz/fiche Quiz/TGV.jpg",
+     "img_a": "C:/Users/niems/Downloads/fiche Quiz/repasavecduboeuf.jpg",
+     "img_b": "C:/Users/niems/Downloads/fiche Quiz/TGV.jpg",
      "explanation": " 7.26 kg Co2 vs 4.4 kg Co2 pour le TGV. Par personne et par kilomètre, le train pollue 8 fois moins que la voiture et 14 fois moins que l'avion."},
      
     {"question": "D'après vous, qu'est-ce qui a le moins d'impact sur le climat ?",
      "option_a": "1000 recherches Google par jour",
      "option_b": "1 email avec pièce jointe lourde (10Mo)",
-     "a_ecv": 0.219,
-     "b_ecv": 0.5,
-     "img_a": "../streamlit_quiz/fiche Quiz/recherche_google.jpg",
-     "img_b": "../streamlit_quiz/fiche Quiz/email_lourd.jpg",
+     "a_ecv": 2.19,
+     "b_ecv": 50,
+     "img_a": "C:/Users/niems/Downloads/fiche Quiz/recherche_google.jpg",
+     "img_b": "C:/Users/niems/Downloads/fiche Quiz/email_lourd.jpg",
      "explanation": "2.19 kg CO2 pour 1000 recherches vs 50g CO2 pour 1 email lourd ! Une recherche Google émet environ 0.2g de CO2, donc même 1000 recherches par jour pendant un an restent moins polluantes qu'un seul gros email avec pièce jointe. Pensez à compresser vos fichiers et vider régulièrement votre boîte mail !"},
+
 
     {"question": "D'après vous, qu'est-ce qui a le moins d'impact sur le climat ?",
      "option_a": "10 km en vélo électrique",
      "option_b": "10 km en transports en commun",
      "a_ecv": 0.022,
      "b_ecv": 0.032,
-     "img_a": "../streamlit_quiz/fiche Quiz/velo_electrique.jpg",
-     "img_b": "../streamlit_quiz/fiche Quiz/bus_tram.jpg",
+     "img_a": "C:/Users/niems/Downloads/fiche Quiz/velo_electrique.jpg",
+     "img_b": "C:/Users/niems/Downloads/fiche Quiz/bus_tram.jpg",
      "explanation": "0.022 kg CO2 pour 10 km en vélo électrique vs 0.032 kg CO2 en transports en commun ! Le vélo électrique reste champion avec seulement 2.2g CO2/km contre 3.2g pour les transports en commun. Même avec sa batterie, le vélo électrique reste très vertueux comparé à tous les autres modes de transport."},
 
     {"question": "D'après vous, qu'est-ce qui a le moins d'impact sur le climat ?",
@@ -34,8 +32,8 @@ quiz_data = [
      "option_b": "1 Ordinateur Portable",
      "a_ecv": 339,
      "b_ecv": 193,
-     "img_a": "../streamlit_quiz/fiche Quiz/Refrigerateur.jpg",
-     "img_b": "../streamlit_quiz/fiche Quiz/ordinateur portable.jpg",
+     "img_a": "C:/Users/niems/Downloads/fiche Quiz/Refrigerateur.jpg",
+     "img_b": "C:/Users/niems/Downloads/fiche Quiz/ordinateur portable.jpg",
      "explanation" : " 339 kg/Co2 pour le réfrigérateur vs 193 kg/Co2 pour l'ordianteur portable ! Les appareils électroménagers ont aussi un fort impact sur le climat. Tout comme les appareils numériques, l'étape de fabrication est celle qui pèse le plus lourd dans leur bilan carbone."},
 
     {"question": "D'après vous, qu'est-ce qui a le moins d'impact sur le climat ?",
@@ -43,12 +41,15 @@ quiz_data = [
      "option_b": "1 A/R Lille-Nimes en voiture",
      "a_ecv": 7.86,
      "b_ecv": 410,
-     "img_a": "../streamlit_quiz/fiche Quiz/friends.jpg",
-     "img_b": "../streamlit_quiz/fiche Quiz/voiture.jpg",
+     "img_a": "C:/Users/niems/Downloads/fiche Quiz/friends.jpg",
+     "img_b": "C:/Users/niems/Downloads/fiche Quiz/voiture.jpg",
      "explanation": "7.86 Kg/Co2 pour l'intégrale de Friends vs 410 Kg/Co2 pour un A/R Lille-Nimes ! Regarder les 236 épisodes de Friends en streaming a 50 fois moins d'impact sur l'environnement qu'un déplacement de presque 1000 km en voiture thermique. En effet, aujourd'hui le secteur du transport représente 30% des émission de gaz à effet de serre en France, alors que le secteur du numérique seulement 2,5%."},
 ]
 
 ######################################  debut quizz ######################################
+
+import streamlit as st
+import plotly.graph_objects as go  
 
 # 🎨 CSS personnalisé pour un look écologique moderne
 st.markdown("""
@@ -145,6 +146,19 @@ st.markdown("""
         font-weight: 600 !important;
         margin-top: 10px !important;
     }
+    
+    /* Centrage horizontal spécifique */
+    .st-emotion-cache-8atqhb.e1q5ojhd0 {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+    
+    .st-emotion-cache-xhkv9f.et0utro2 {
+        margin: 0 auto !important;
+        display: block !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -206,15 +220,11 @@ def check_answer(choice):
         st.error("🤔 Pas tout à fait ! Mais c'est instructif !")  
 
     # Affichage des données avec style
-    better_option = "a" if q["a_ecv"] < q["b_ecv"] else "b"
-    color_a = "#4caf50" if better_option == "a" else "#ff6b6b"  # Vert si meilleur, rouge sinon
-    color_b = "#4caf50" if better_option == "b" else "#ff6b6b"  # Vert si meilleur, rouge sinon
-    
     st.markdown(f"""
     <div class="eco-metric">
         <strong>📊 Comparaison CO2 :</strong><br>
-        🅰️ {q['option_a']} : <span style="color: {color_a}; font-weight: bold;">{q['a_ecv']} kg CO2</span><br>
-        🅱️ {q['option_b']} : <span style="color: {color_b}; font-weight: bold;">{q['b_ecv']} kg CO2</span>
+        🅰️ {q['option_a']} : <span style="color: #ff6b6b; font-weight: bold;">{q['a_ecv']} kg CO2</span><br>
+        🅱️ {q['option_b']} : <span style="color: #4caf50; font-weight: bold;">{q['b_ecv']} kg CO2</span>
     </div>
     """, unsafe_allow_html=True)
     
@@ -266,7 +276,7 @@ if st.session_state.current < len(quiz_data):
             st.rerun()
             
 else:   
-    # Page finale avec résultats stylés
+    # 🎊 Page finale avec résultats stylés
     score = st.session_state.score
     total = len(quiz_data)
     
