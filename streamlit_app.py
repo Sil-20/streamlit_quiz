@@ -87,6 +87,50 @@ st.markdown("""
         margin: 1rem 0;
         border-left: 4px solid #ff6b6b;
     }
+    
+    /* Style pour centrer et uniformiser les images */
+    .stImage > div {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    
+    .stImage img {
+        width: 200px !important;
+        height: 150px !important;
+        object-fit: cover !important;  /* ou contain selon vos préférences */
+        border-radius: 10px !important;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+        transition: transform 0.2s ease !important;
+    }
+    
+    .stImage img:hover {
+        transform: scale(1.05) !important;
+    }
+    
+    /* Style pour les conteneurs de colonne */
+    .stColumn > div {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+    
+    /* Style pour les boutons de réponse */
+    .stButton > button {
+        width: 100% !important;
+        height: 60px !important;
+        border-radius: 12px !important;
+        font-size: 16px !important;
+        font-weight: 600 !important;
+        margin-top: 10px !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .stButton > button:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15) !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
