@@ -104,32 +104,46 @@ st.markdown("""
         transition: transform 0.2s ease !important;
     }
     
-    .stImage img:hover {
-        transform: scale(1.05) !important;
-    }
-    
-    /* Style pour les conteneurs de colonne */
     .stColumn > div {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         text-align: center !important;
-    }
-    
-    /* Style pour les boutons de réponse */
-    .stButton > button {
         width: 100% !important;
-        height: 60px !important;
-        border-radius: 12px !important;
-        font-size: 16px !important;
-        font-weight: 600 !important;
-        margin-top: 10px !important;
+        max-width: 350px !important;
+        padding: 25px !important;
+        border: 2px solid #e8f5e8 !important;
+        border-radius: 15px !important;
+        background: white !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+        margin: 10px !important;
         transition: all 0.3s ease !important;
     }
     
-    .stButton > button:hover {
-        transform: translateY(-2px) !important;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.15) !important;
+    .stColumn > div:hover {
+        border-color: #4CAF50 !important;
+        transform: translateY(-3px) !important;
+        box-shadow: 0 8px 20px rgba(76, 175, 80, 0.2) !important;
+    }
+    
+    .stImage {
+        margin-bottom: 15px !important;
+    }
+    
+    .stImage img {
+        width: 280px !important;
+        height: 180px !important;
+        object-fit: cover !important;
+        border-radius: 10px !important;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1) !important;
+    }
+    
+    .stButton > button {
+        width: 280px !important;
+        height: 55px !important;
+        border-radius: 25px !important;
+        font-weight: 600 !important;
+        margin-top: 10px !important;
     }
 </style>
 """, unsafe_allow_html=True)
